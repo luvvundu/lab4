@@ -5,15 +5,6 @@ on:
     types: [published]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-      
-  release:
-    types: [published]
-
   deploy:
     runs-on: ubuntu-latest
 
