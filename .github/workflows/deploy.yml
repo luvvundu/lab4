@@ -25,14 +25,14 @@ jobs:
       - name: Copy files
         run: |
           VERSION=${{  github.ref_name }}
-          mkdir -p "./pages/${VERSION}"
-          cp -r ./en "./pages/${VERSION}/"
-          cp -r ./ru "./pages/${VERSION}/"
-          cp -r ./index.html "./pages/${VERSION}/"
-          cp -r ./README.md "./pages/${VERSION}/"
-          cp -r ./en "./pages/"
-          cp -r ./ru "./pages/"
-          cp -r ./index.html "./pages/"
+          mkdir -p "./_LVsite /${VERSION}"
+          cp -r ./en "./_LVsite /${VERSION}/"
+          cp -r ./ru "./_LVsite /${VERSION}/"
+          cp -r ./index.html "./_LVsite /${VERSION}/"
+          cp -r ./README.md "./_LVsite /${VERSION}/"
+          cp -r ./en "./_LVsite /"
+          cp -r ./ru "./_LVsite /"
+          cp -r ./index.html "./_LVsite /"
         
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
