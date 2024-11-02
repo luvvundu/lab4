@@ -14,15 +14,12 @@ jobs:
 
       - name: Copy files
         run: |
-          VERSION=${{  github.ref_name }}
+          VERSION=${{ github.ref_name }}
           mkdir -p "./_LVsite/${VERSION}"
           cp -r ./en "./_LVsite/${VERSION}/"
           cp -r ./ru "./_LVsite/${VERSION}/"
-          cp -r ./index.html "./_LVsite/${VERSION}/"
-          cp -r ./README.md "./_LVsite/${VERSION}/"
-          cp -r ./en "./_LVsite/"
-          cp -r ./ru "./_LVsite/"
-          cp -r ./index.html "./_LVsite/"
+          cp ./index.html "./_LVsite/${VERSION}/"
+          cp ./README.md "./_LVsite/${VERSION}/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
