@@ -11,16 +11,35 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '16'
-      
-      - name: Build project
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy files
         run: |
-          npm install
-          npm run build
-          npm run deploy
+          VERSION=${{  github.ref_name }}
+          mkdir -p "./pages/${VERSION}"
+          cp -r ./en "./pages/${VERSION}/"
+          cp -r ./ru "./pages/${VERSION}/"
+          cp -r ./index.html "./pages/${VERSION}/"
+          cp -r ./README.md "./pages/${VERSION}/"
+          cp -r ./en "./pages/"
+          cp -r ./ru "./pages/"
+          cp -r ./index.html "./pages/"
+        
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           publish_dir: ./pages
+           keep_files: true 
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
