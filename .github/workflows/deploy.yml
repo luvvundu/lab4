@@ -15,8 +15,7 @@ jobs:
       - name: Copy files
         run: |
           VERSION=${{ github.ref_name }}
-          DIR = "./_LVsite/${VERSION}"
-          mkdir -p "$DIR"
+          mkdir -p "./_LVsite/${VERSION}"
           
           cp -r ./en "./_LVsite/${VERSION}/"
           cp -r ./ru "./_LVsite/${VERSION}/"
