@@ -33,13 +33,6 @@ jobs:
           cp -r ./en "./_LVsite /"
           cp -r ./ru "./_LVsite /"
           cp -r ./index.html "./_LVsite /"
-        
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
-           publish_dir: ./pages
-           keep_files: true 
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
